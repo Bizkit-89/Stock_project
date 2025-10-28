@@ -45,14 +45,18 @@ plt.savefig("yearly_high_low.png")
 plt.close()
 
 # ----- Chart 2: Growth Percentage -----
+# ----- Chart 2: Growth Percentage -----
 plt.figure(figsize=(10, 5))
-plt.bar(yearly_data['Year'], yearly_data['Growth Percentage (%)'], color='blue')
+plt.plot(yearly_data['Year'], yearly_data['Growth Percentage (%)'], 
+         color='blue', marker='o', linestyle='-', linewidth=2)
 plt.xlabel('Year')
 plt.ylabel('Growth (%)')
 plt.title('MTN Ghana Share Price Growth by Year')
+plt.grid(True, linestyle='--', alpha=0.6)
 plt.tight_layout()
 plt.savefig("growth_percentage.png")
 plt.close()
+
 
 # ----- Create PowerPoint -----
 prs = Presentation()
@@ -75,4 +79,4 @@ with pd.ExcelWriter("MTN_Growth_Analysis.xlsx", engine='openpyxl') as writer:
     df.to_excel(writer, sheet_name="Raw Data", index=False)
     yearly_data.to_excel(writer, sheet_name="Yearly Summary", index=False)
 
-prs.save("MTN_Growth_Analysis_v2.pptx")
+prs.save("MTN_Growth2222_Analysis_v2.pptx")
